@@ -1,0 +1,27 @@
+:host {
+	display: none;
+	font-size: medium;
+}
+
+section {
+	flex: 2;
+}
+
+ul {
+	flex: 10;
+}
+
+h1 {
+	font-size: 1.3em;
+}
+
+/*menu li input:not([oninput]) {
+	opacity: 0.5;
+	pointer-events: none;
+}*/
+
+@media (max-width: 480px) {
+	section {
+		flex: 1;
+	}
+}
