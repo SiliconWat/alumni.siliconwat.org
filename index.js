@@ -4,6 +4,7 @@ import "/components/sw-main/sw-home/element.mjs";
 import "/components/sw-main/sw-scoreboard/element.mjs";
 import "/components/sw-main/element.mjs";
 
+import "/components/sw-coin/element.mjs";
 import "/components/sw-footer/element.mjs";
 
 import { BACKGROUND } from "/global.mjs";

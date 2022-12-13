@@ -13,7 +13,41 @@ template.innerHTML = `
         <label class='menu-button-container' for="menu-toggle">
             <span class='menu-button'></span>
         </label>
-        <ul></ul>
+        <ul>
+            <li>
+                <h3>Frontend Music Course</h3>
+                <nav>
+                    <h4>Scoreboard</h4>
+                    <menu>
+                        <li><a href="#frontend-startup">Best Startup</a></li>
+                        <li><a href="#frontend-idea">Best Idea</a></li>
+                        <li><a href="#frontend-code">Best Code</a></li>
+                    </menu>
+                </nav>
+            </li>
+            <li>
+                <h3>Backend Blockchain Course</h3>
+                <nav>
+                <h4>Scoreboard</h4>
+                    <menu>
+                        <li><a href="#backend-startup">Best Startup</a></li>
+                        <li><a href="#backend-idea">Best Idea</a></li>
+                        <li><a href="#backend-code">Best Code</a></li>
+                    </menu>
+                </nav>
+            </li>
+            <li>
+                <h3>iOS Metaverse Course</h3>
+                <nav>
+                <h4>Scoreboard</h4>
+                    <menu>
+                        <li><a href="#ios-startup">Best Startup</a></li>
+                        <li><a href="#ios-idea">Best Idea</a></li>
+                        <li><a href="#ios-code">Best Code</a></li>
+                    </menu>
+                </nav>
+            </li>
+        </ul>
         <aside>
             <select onchange="this.getRootNode().host.changeLanguage(event)">
                 <option value="en">English</option>

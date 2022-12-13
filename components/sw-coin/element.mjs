@@ -1,15 +1,15 @@
 import template from './template.mjs';
 
-class SwHome extends HTMLElement {
+class SwCoin extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    render(cohort) {
+    connectedCallback() {
         this.style.display = 'block';
     }
 }
 
-customElements.define("sw-home", SwHome);
+customElements.define("sw-coin", SwCoin);
