@@ -15,8 +15,9 @@ template.innerHTML = `
         </label>
         <ul>
             <li>
-                <h3>Frontend Music Course</h3>
+                <h3>Frontend Music Cohort</h3>
                 <nav>
+                    <a href="#frontend"><button>Student Roster</button></a>
                     <h4>Scoreboard</h4>
                     <menu>
                         <li><a href="#frontend-startup">Best Startup</a></li>
@@ -26,9 +27,10 @@ template.innerHTML = `
                 </nav>
             </li>
             <li>
-                <h3>Backend Blockchain Course</h3>
+                <h3>Backend Blockchain Cohort</h3>
                 <nav>
-                <h4>Scoreboard</h4>
+                    <a href="#backend"><button>Student Roster</button></a>
+                    <h4>Scoreboard</h4>
                     <menu>
                         <li><a href="#backend-startup">Best Startup</a></li>
                         <li><a href="#backend-idea">Best Idea</a></li>
@@ -37,9 +39,10 @@ template.innerHTML = `
                 </nav>
             </li>
             <li>
-                <h3>iOS Metaverse Course</h3>
+                <h3>iOS Metaverse Cohort</h3>
                 <nav>
-                <h4>Scoreboard</h4>
+                    <a href="#ios"><button>Student Roster</button></a>
+                    <h4>Scoreboard</h4>
                     <menu>
                         <li><a href="#ios-startup">Best Startup</a></li>
                         <li><a href="#ios-idea">Best Idea</a></li>

@@ -7,9 +7,10 @@ import "/components/sw-main/element.mjs";
 import "/components/sw-coin/element.mjs";
 import "/components/sw-footer/element.mjs";
 
-import { BACKGROUND } from "/global.mjs";
+import { FRONTEND, BACKGROUND } from "/global.mjs";
 window.onload = async () => {
-    //if (!window.TESTING) window.clearCache();
+    await import(`${FRONTEND}/admin.mjs`);
+    if (!window.TESTING) window.clearCache();
     
     await document.querySelector('sw-main').render();
     document.documentElement.style.backgroundImage = BACKGROUND;

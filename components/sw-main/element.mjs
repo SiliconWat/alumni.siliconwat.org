@@ -26,7 +26,7 @@ class SwMain extends HTMLElement {
     get #hash() {
         if (window.location.hash) {
             const hash = window.location.hash.substring(1).split("-");
-            return hash.length === 2 ? ["SW-SCOREBOARD", hash[0],  hash[1]] : ["SW-HOME", hash[0],  null];
+            return  ["SW-SCOREBOARD", hash[0], hash.length === 2 ? hash[1] : null];
         } return ["SW-HOME", null, null];
     }
 }

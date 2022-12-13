@@ -3,6 +3,7 @@
     margin: 0 50px;
     min-height: 200vh;
     font-size: large;
+    color: white;
 }
 
 @media (max-width: 480px) {
