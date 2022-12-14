@@ -1,0 +1,57 @@
+:host {
+    display: block;
+    font-size: medium;
+}
+
+a {
+    color: currentColor;
+}
+
+table {
+    color: currentColor;
+    font-size: 1.5em;
+    background-color: rgba(0, 0, 0, 60%);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 60%);
+    border-collapse: collapse;
+    text-align: center;
+    overflow-x: scroll;
+}
+
+th, td {
+    padding: 25px;
+}
+
+caption {
+    display: none;
+}
+
+col:first-child {
+    background-color: rgba(0, 0, 0, 10%);
+}
+
+thead {
+    background-color: rgba(0, 0, 0, 30%);
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 20%);
+}
+
+td:hover {
+    color: lightgreen;
+    font-weight: bold;
+}
+
+.highlight {
+    background-color: rgba(255, 255, 0, 20%);
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 0.3em;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+}
