@@ -15,8 +15,8 @@ template.innerHTML = `
         <thead>
             <tr>
                 <th scope="col">RANK</th>
-                <th scope="col">Student</th>
-                <th scope="col">Score</th>
+                <th scope="col">STUDENT</th>
+                <th scope="col">SCORE</th>
                 <th scope="col">Best Startup</th>
                 <th scope="col">Best Idea</th>
                 <th scope="col">Best Code</th>
