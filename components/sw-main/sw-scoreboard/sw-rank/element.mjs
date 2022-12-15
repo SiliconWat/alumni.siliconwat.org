@@ -8,7 +8,7 @@ class SwRank extends HTMLElement {
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    async render(cohort, game) {
+    async render(cohort, best) {
         const { getYear, getTerm, getData } = await import(`${FRONTEND}/global2.mjs`);
         const y = getYear();
         const term = getTerm();
@@ -16,10 +16,10 @@ class SwRank extends HTMLElement {
         const votes = await getData(`https://raw.githubusercontent.com/SiliconWat/${cohort}-cohort/main/${y}/${term[1] === 'semester' ? "Semesters" : "Quarters"}/${term[2].capitalize()}/Votes.json`);
         
         const data = JSON.parse(localStorage.getItem('data')) || await this.#createData(y, term, students, votes); // TODO: later?
-        this.#render(data, game);
+        this.#render(this.#sort(data, best));
     }
 
-    #render(data, game) {
+    #render(data) {
         const tbody = document.createDocumentFragment();
 
         data.forEach((item, i) => {
@@ -59,6 +59,29 @@ class SwRank extends HTMLElement {
         }
 
         return data;
+    }
+
+    #sort(array, best) {
+        switch (best) {
+            case "startup":
+                return;
+            case "idea":
+                return;
+            case "code":
+                return;
+            case "student":
+                return array.sort((a, b) => {
+                    if (a.student.username < b.student.username) return -1;
+                    if (a.student.username > b.student.username) return 1;
+                    return 0;
+                });
+            default: 
+                return array.sort((a, b) => {
+                    if (a.student.score < b.student.score) return 1;
+                    if (a.student.score > b.student.score) return -1;
+                    return 0;
+                });
+        }
     }
 }
 

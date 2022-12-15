@@ -26,6 +26,10 @@ caption {
 }
 
 col:first-child {
+    background-color: rgba(0, 0, 0, 20%);
+}
+
+col:nth-child(2) {
     background-color: rgba(0, 0, 0, 10%);
 }
 
