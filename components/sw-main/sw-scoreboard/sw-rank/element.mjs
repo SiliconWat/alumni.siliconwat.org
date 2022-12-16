@@ -9,17 +9,17 @@ class SwRank extends HTMLElement {
     }
 
     async render(cohort, best) {
-        const { getYear, getTerm, getData } = await import(`${FRONTEND}/global2.mjs`);
+        const { getYear, getTerm, getData, getEmoji } = await import(`${FRONTEND}/global2.mjs`);
         const y = getYear();
         const term = getTerm();
         const students = await getData(`https://raw.githubusercontent.com/SiliconWat/${cohort}-cohort/main/Students.json`);
         const votes = await getData(`https://raw.githubusercontent.com/SiliconWat/${cohort}-cohort/main/${y}/${term[1] === 'semester' ? "Semesters" : "Quarters"}/${term[2].capitalize()}/Votes.json`);
         
         const data = JSON.parse(localStorage.getItem('data')) || await this.#createData(y, term, students, votes); // TODO: later?
-        this.#render(cohort, best, data);
+        this.#render(cohort, best, data, getEmoji);
     }
 
-    #render(cohort, best, data) {
+    #render(cohort, best, data, getEmoji) {
         const tbody = document.createDocumentFragment();
 
         // thead
@@ -39,24 +39,31 @@ class SwRank extends HTMLElement {
         this.#sort(data, best).forEach((item, i) => {
             const tr = document.createElement('tr');
             const rank = document.createElement('th');
-            const student = document.createElement('td');
+            const student = document.createElement('th');
             const score = document.createElement('td');
             const startup = document.createElement('td');
             const idea = document.createElement('td');
             const code = document.createElement('td');
 
             rank.textContent = `#${i + 1}`;
-            student.textContent = item.student.username;
+            student.textContent = `${getEmoji(item.student)} ${item.student.username}`;
+            student.style.cursor = "pointer";
+            student.title = `https://github.com/${item.student.username}`;
+            student.onclick = () => document.location = student.title;
             score.textContent = item.student.score;
             startup.textContent = item.votes.startup.length;
+            startup.title = item.votes.startup.join(", ");
             idea.textContent = item.votes.idea.length;
+            idea.title = item.votes.idea.join(", ");
             code.textContent = item.votes.code.length;
+            code.title = item.votes.code.join(", ");
 
             tr.append(rank, student, score, startup, idea, code);
             tbody.append(tr);
         });
 
         this.shadowRoot.querySelector('tbody').replaceChildren(tbody);
+        this.#highlight(best);
     }
 
     async #createData(y, term, students, votes) {
@@ -101,6 +108,23 @@ class SwRank extends HTMLElement {
             if (a.student.username > b.student.username) return 1;
             return 0;
         }); 
+    }
+
+    #highlight(best) {
+        this.shadowRoot.querySelectorAll('col').forEach(element => element.classList.remove('highlight'));
+        switch (best) {
+            case "startup":
+                this.shadowRoot.querySelector('col:nth-child(4)').classList.add('highlight');
+                break;
+            case "idea":
+                this.shadowRoot.querySelector('col:nth-child(5)').classList.add('highlight');
+                break;
+            case "code":
+                this.shadowRoot.querySelector('col:nth-child(6)').classList.add('highlight');
+                break;
+            default: 
+                this.shadowRoot.querySelector('col:nth-child(3)').classList.add('highlight');
+        }
     }
 }
 

@@ -18,6 +18,7 @@ table {
 }
 
 th, td {
+    cursor: default;
     padding: 25px;
 }
 
@@ -45,12 +46,9 @@ tbody tr:hover {
     background-color: rgba(255, 255, 255, 20%);
 }
 
-td:hover {
-    color: lightgreen;
-    font-weight: bold;
-}
-
 .highlight {
+    color: lightgreen !important;
+    font-weight: bold !important;
     background-color: rgba(255, 255, 0, 20%);
 }
 
