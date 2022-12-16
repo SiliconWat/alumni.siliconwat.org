@@ -5,8 +5,8 @@ template.innerHTML = `
     <link rel="stylesheet" href="components/sw-main/sw-scoreboard/shadow.css">
     <main>
         <h1 id="cohort"></h1>
-        <h2><select id="year" onchange="this.getRootNode().host.changeYearTerm(event)"></select></h2>
-        <h3>
+        <h2>
+            <select id="year" onchange="this.getRootNode().host.changeYearTerm(event)"></select>
             <select id="term" onchange="this.getRootNode().host.changeYearTerm(event)">
                 <optgroup label="Semester (Part-Time Program)">
                     <option value="semester-winter">Winter Semester</option>
@@ -19,7 +19,7 @@ template.innerHTML = `
                     <option value="quarter-fall">Fall Quarter</option>
                 </optgroup>
             </select>
-        </h3>
+        </h2>
         <sw-rank></sw-rank>
     </main>
 `;

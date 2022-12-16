@@ -6,6 +6,15 @@
     color: white;
 }
 
+main {
+    text-align: center;
+}
+
+h1 {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
+}
+
 @media (max-width: 480px) {
     :host {
         margin: 0 30px;

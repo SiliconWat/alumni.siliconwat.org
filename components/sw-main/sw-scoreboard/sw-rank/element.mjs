@@ -46,17 +46,22 @@ class SwRank extends HTMLElement {
             const code = document.createElement('td');
 
             rank.textContent = `#${i + 1}`;
+            if (item.student.project) {
+                rank.style.cursor = "pointer";
+                rank.title = item.student.project;
+                rank.onclick = () => document.location = rank.title;
+            }
             student.textContent = `${getEmoji(item.student)} ${item.student.username}`;
             student.style.cursor = "pointer";
             student.title = `https://github.com/${item.student.username}`;
             student.onclick = () => document.location = student.title;
-            score.textContent = item.student.score;
-            startup.textContent = item.votes.startup.length;
-            startup.title = item.votes.startup.join(", ");
-            idea.textContent = item.votes.idea.length;
-            idea.title = item.votes.idea.join(", ");
-            code.textContent = item.votes.code.length;
-            code.title = item.votes.code.join(", ");
+            score.textContent = item.student.score || "TBD";
+            startup.textContent = item.student.project ? item.votes.startup.length : "TBD";
+            startup.title = item.student.project ? item.votes.startup.join(", ") || "No Voters" : "TBD";
+            idea.textContent = item.student.project ? item.votes.idea.length : "TBD";
+            idea.title = item.student.project ? item.votes.idea.join(", ") || "No Voters" : "TBD";
+            code.textContent = item.student.project ? item.votes.code.length : "TBD";
+            code.title = item.student.project ? item.votes.code.join(", ") || "No Voters" : "TBD";
 
             tr.append(rank, student, score, startup, idea, code);
             tbody.append(tr);
