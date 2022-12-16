@@ -6,10 +6,10 @@ class SwMain extends HTMLElement {
         super();
         this.attachShadow({ mode: "open" });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
-        window.addEventListener("hashchange", event => this.render());
     }
 
     connectedCallback() {
+        window.addEventListener("hashchange", event => this.render());
         this.style.display = 'block';
     }
 

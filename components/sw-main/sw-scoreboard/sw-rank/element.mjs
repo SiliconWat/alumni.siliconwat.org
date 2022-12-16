@@ -16,13 +16,27 @@ class SwRank extends HTMLElement {
         const votes = await getData(`https://raw.githubusercontent.com/SiliconWat/${cohort}-cohort/main/${y}/${term[1] === 'semester' ? "Semesters" : "Quarters"}/${term[2].capitalize()}/Votes.json`);
         
         const data = JSON.parse(localStorage.getItem('data')) || await this.#createData(y, term, students, votes); // TODO: later?
-        this.#render(this.#sort(data, best));
+        this.#render(cohort, best, data);
     }
 
-    #render(data) {
+    #render(cohort, best, data) {
         const tbody = document.createDocumentFragment();
 
-        data.forEach((item, i) => {
+        // thead
+
+        const score = this.shadowRoot.querySelector('thead th:nth-child(3)');
+        const startup = this.shadowRoot.querySelector('thead th:nth-child(4)');
+        const idea = this.shadowRoot.querySelector('thead th:nth-child(5)');
+        const code = this.shadowRoot.querySelector('thead th:nth-child(6)');
+
+        score.onclick = () => window.location.hash = cohort;
+        startup.onclick = () => window.location.hash = `${cohort}-startup`;
+        idea.onclick = () => window.location.hash = `${cohort}-idea`;
+        code.onclick = () => window.location.hash = `${cohort}-code`;
+
+        // tbody
+
+        this.#sort(data, best).forEach((item, i) => {
             const tr = document.createElement('tr');
             const rank = document.createElement('th');
             const student = document.createElement('td');
@@ -34,9 +48,9 @@ class SwRank extends HTMLElement {
             rank.textContent = `#${i + 1}`;
             student.textContent = item.student.username;
             score.textContent = item.student.score;
-            startup.textContent = item.votes.startup ? item.votes.startup.length : 0;
-            idea.textContent = item.votes.idea ? item.votes.idea.length : 0;
-            code.textContent = item.votes.code ? item.votes.code.length : 0;
+            startup.textContent = item.votes.startup.length;
+            idea.textContent = item.votes.idea.length;
+            code.textContent = item.votes.code.length;
 
             tr.append(rank, student, score, startup, idea, code);
             tbody.append(tr);
@@ -53,7 +67,7 @@ class SwRank extends HTMLElement {
             if (cohort) {
                 const item = {};
                 item.student = { username: student, ...cohort };
-                item.votes = { startup: votes.startup[student], idea: votes.idea[student], code: votes.code[student] };
+                item.votes = { startup: votes.startup[student] || [], idea: votes.idea[student] || [], code: votes.code[student] || [] };
                 data.push(item);
             }
         }
@@ -62,26 +76,28 @@ class SwRank extends HTMLElement {
     }
 
     #sort(array, best) {
+        return this.#sortByBest([...this.#sortByUsername(array)], best);
+    }
+
+    #sortByBest(array, best) {
         switch (best) {
             case "startup":
-                return;
+                return array.sort((a, b) => b.votes.startup.length - a.votes.startup.length);
             case "idea":
-                return;
+                return array.sort((a, b) => b.votes.idea.length - a.votes.idea.length);
             case "code":
-                return;
-            case "student":
-                return array.sort((a, b) => {
-                    if (a.student.username < b.student.username) return -1;
-                    if (a.student.username > b.student.username) return 1;
-                    return 0;
-                });
+                return array.sort((a, b) => b.votes.code.length - a.votes.code.length);
             default: 
-                return array.sort((a, b) => {
-                    if (a.student.score < b.student.score) return 1;
-                    if (a.student.score > b.student.score) return -1;
-                    return 0;
-                });
+                return array.sort((a, b) => b.student.score - a.student.score);
         }
+    }
+
+    #sortByUsername(array) {
+        return array.sort((a, b) => {
+            if (a.student.username < b.student.username) return -1;
+            if (a.student.username > b.student.username) return 1;
+            return 0;
+        }); 
     }
 }
 
