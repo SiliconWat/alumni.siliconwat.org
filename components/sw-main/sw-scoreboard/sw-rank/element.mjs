@@ -61,6 +61,9 @@ class SwRank extends HTMLElement {
 
     async #createData(y, term, students, votes) {
         const data = [];
+        votes.startup = votes.startup || {};
+        votes.idea = votes.idea || {};
+        votes.code = votes.code || {};
         
         for (let student in students) {
             const cohort = students[student].cohorts.find(cohort => cohort.year === y && cohort.system === term[1] && cohort.season === term[2]);
