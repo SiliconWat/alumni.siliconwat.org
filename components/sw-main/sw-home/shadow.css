@@ -20,15 +20,6 @@ h1 {
     margin-bottom: 0;
 }
 
-h2 {
-    margin-bottom: 50px;
-}
-
-select {
-    font-size: 1em;
-    margin: 10px;
-}
-
 @media (max-width: 480px) {
     :host {
         margin: 0 30px;
@@ -36,9 +27,5 @@ select {
 
     h1 {
         font-size: 2em;
-    }
-
-    select {
-        font-size: 0.8em;
     }
 }
