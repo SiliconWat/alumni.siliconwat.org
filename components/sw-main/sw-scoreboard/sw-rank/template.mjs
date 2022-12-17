@@ -24,11 +24,7 @@ template.innerHTML = `
                 <th scope="col">Best Code</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td colspan="6"><em>TBD</em></td>
-            </tr>
-        </tbody>
+        <tbody></tbody>
     </table>
 `;
 

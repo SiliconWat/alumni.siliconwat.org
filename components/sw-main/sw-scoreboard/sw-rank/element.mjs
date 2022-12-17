@@ -36,38 +36,48 @@ class SwRank extends HTMLElement {
 
         // tbody
 
-        this.#sort(data, best).forEach((item, i) => {
+        if (data.length > 0) {
+            this.#sort(data, best).forEach((item, i) => {
+                const tr = document.createElement('tr');
+                const rank = document.createElement('th');
+                const student = document.createElement('th');
+                const score = document.createElement('td');
+                const startup = document.createElement('td');
+                const idea = document.createElement('td');
+                const code = document.createElement('td');
+
+                rank.textContent = `#${i + 1}`;
+                if (item.student.project) {
+                    rank.style.cursor = "pointer";
+                    rank.title = item.student.project;
+                    rank.onclick = () => document.location = rank.title;
+                }
+                student.textContent = `${getEmoji(item.student)} ${item.student.username}`;
+                student.style.cursor = "pointer";
+                student.title = `https://github.com/${item.student.username}`;
+                student.onclick = () => document.location = student.title;
+                score.textContent = item.student.score || "TBD";
+                startup.textContent = item.student.project ? item.votes.startup.length : "TBD";
+                startup.title = item.student.project ? `Voters: ${item.votes.startup.join(", ") || "None"}` : "TBD";
+                idea.textContent = item.student.project ? item.votes.idea.length : "TBD";
+                idea.title = item.student.project ? `Voters: ${item.votes.idea.join(", ") || "None"}` : "TBD";
+                code.textContent = item.student.project ? item.votes.code.length : "TBD";
+                code.title = item.student.project ? `Voters: ${item.votes.code.join(", ") || "None"}` : "TBD";
+
+                tr.append(rank, student, score, startup, idea, code);
+                tbody.append(tr);
+            });
+        } else {
             const tr = document.createElement('tr');
-            const rank = document.createElement('th');
-            const student = document.createElement('th');
-            const score = document.createElement('td');
-            const startup = document.createElement('td');
-            const idea = document.createElement('td');
-            const code = document.createElement('td');
-
-            rank.textContent = `#${i + 1}`;
-            if (item.student.project) {
-                rank.style.cursor = "pointer";
-                rank.title = item.student.project;
-                rank.onclick = () => document.location = rank.title;
-            }
-            student.textContent = `${getEmoji(item.student)} ${item.student.username}`;
-            student.style.cursor = "pointer";
-            student.title = `https://github.com/${item.student.username}`;
-            student.onclick = () => document.location = student.title;
-            score.textContent = item.student.score || "TBD";
-            startup.textContent = item.student.project ? item.votes.startup.length : "TBD";
-            startup.title = item.student.project ? `Voters: ${item.votes.startup.join(", ") || "None"}` : "TBD";
-            idea.textContent = item.student.project ? item.votes.idea.length : "TBD";
-            idea.title = item.student.project ? `Voters: ${item.votes.idea.join(", ") || "None"}` : "TBD";
-            code.textContent = item.student.project ? item.votes.code.length : "TBD";
-            code.title = item.student.project ? `Voters: ${item.votes.code.join(", ") || "None"}` : "TBD";
-
-            tr.append(rank, student, score, startup, idea, code);
+            const td = document.createElement('td');
+            td.colSpan = 6;
+            td.style.fontStyle = 'italic';
+            td.textContent = "TBD";
+            tr.append(td);
             tbody.append(tr);
-        });
+        }
 
-        if (data.length > 0 ) this.shadowRoot.querySelector('tbody').replaceChildren(tbody);
+        this.shadowRoot.querySelector('tbody').replaceChildren(tbody);
         this.#highlight(best);
     }
 
