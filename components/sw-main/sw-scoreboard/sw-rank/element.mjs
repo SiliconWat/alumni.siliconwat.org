@@ -57,17 +57,17 @@ class SwRank extends HTMLElement {
             student.onclick = () => document.location = student.title;
             score.textContent = item.student.score || "TBD";
             startup.textContent = item.student.project ? item.votes.startup.length : "TBD";
-            startup.title = item.student.project ? item.votes.startup.join(", ") || "No Voters" : "TBD";
+            startup.title = item.student.project ? `Voters: ${item.votes.startup.join(", ") || "None"}` : "TBD";
             idea.textContent = item.student.project ? item.votes.idea.length : "TBD";
-            idea.title = item.student.project ? item.votes.idea.join(", ") || "No Voters" : "TBD";
+            idea.title = item.student.project ? `Voters: ${item.votes.idea.join(", ") || "None"}` : "TBD";
             code.textContent = item.student.project ? item.votes.code.length : "TBD";
-            code.title = item.student.project ? item.votes.code.join(", ") || "No Voters" : "TBD";
+            code.title = item.student.project ? `Voters: ${item.votes.code.join(", ") || "None"}` : "TBD";
 
             tr.append(rank, student, score, startup, idea, code);
             tbody.append(tr);
         });
 
-        this.shadowRoot.querySelector('tbody').replaceChildren(tbody);
+        if (data.length > 0 ) this.shadowRoot.querySelector('tbody').replaceChildren(tbody);
         this.#highlight(best);
     }
 

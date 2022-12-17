@@ -12,6 +12,17 @@ td:hover {
     font-weight: normal;
 }
 
+tbody th {
+    cursor: pointer;
+}
+
+
+a {
+    display: block;
+    color: currentColor;
+    text-decoration: none;
+}
+
 @media (max-width: 480px) {
     
 }

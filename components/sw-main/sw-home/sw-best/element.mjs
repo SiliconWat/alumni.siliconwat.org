@@ -9,69 +9,93 @@ class SwBest extends HTMLElement {
     }
 
     async render() {
-        const { getYear, getTerm, getData, getEmoji } = await import(`${FRONTEND}/global2.mjs`);
+        const { getYear, getTerm, getData } = await import(`${FRONTEND}/global2.mjs`);
         const y = getYear();
         const term = getTerm();
-        const votes = await getData(`https://raw.githubusercontent.com/SiliconWat/${cohort}-cohort/main/${y}/${term[1] === 'semester' ? "Semesters" : "Quarters"}/${term[2].capitalize()}/Votes.json`);
-        
-        const data = JSON.parse(localStorage.getItem('best')) || await this.#createData(y, term, students, votes); // TODO: later?
-        this.#render(cohort, best, data, getEmoji);
+        const cohorts = JSON.parse(localStorage.getItem(`${y}-${term}`)) || await this.#findBest(y, term, getData); // TODO: later?
+        this.#render(cohorts);
     }
 
-    #render(cohort, best, data, getEmoji) {
+    #render(cohorts) {
         const tbody = document.createDocumentFragment();
 
-        // thead
-
-        const score = this.shadowRoot.querySelector('thead th:nth-child(3)');
-        const startup = this.shadowRoot.querySelector('thead th:nth-child(4)');
-        const idea = this.shadowRoot.querySelector('thead th:nth-child(5)');
-        const code = this.shadowRoot.querySelector('thead th:nth-child(6)');
-
-        score.onclick = () => window.location.hash = cohort;
-        startup.onclick = () => window.location.hash = `${cohort}-startup`;
-        idea.onclick = () => window.location.hash = `${cohort}-idea`;
-        code.onclick = () => window.location.hash = `${cohort}-code`;
-
-        // tbody
-
-        this.#sort(data, best).forEach((item, i) => {
+        cohorts.forEach(cohort => {
             const tr = document.createElement('tr');
-            const rank = document.createElement('th');
-            const student = document.createElement('th');
-            const score = document.createElement('td');
+            const Cohort = document.createElement('th');
             const startup = document.createElement('td');
             const idea = document.createElement('td');
             const code = document.createElement('td');
 
-            rank.textContent = `#${i + 1}`;
-            if (item.student.project) {
-                rank.style.cursor = "pointer";
-                rank.title = item.student.project;
-                rank.onclick = () => document.location = rank.title;
-            }
-            student.textContent = `${getEmoji(item.student)} ${item.student.username}`;
-            student.style.cursor = "pointer";
-            student.title = `https://github.com/${item.student.username}`;
-            student.onclick = () => document.location = student.title;
-            score.textContent = item.student.score || "TBD";
-            startup.textContent = item.student.project ? item.votes.startup.length : "TBD";
-            startup.title = item.student.project ? item.votes.startup.join(", ") || "No Voters" : "TBD";
-            idea.textContent = item.student.project ? item.votes.idea.length : "TBD";
-            idea.title = item.student.project ? item.votes.idea.join(", ") || "No Voters" : "TBD";
-            code.textContent = item.student.project ? item.votes.code.length : "TBD";
-            code.title = item.student.project ? item.votes.code.join(", ") || "No Voters" : "TBD";
+            Cohort.textContent = cohort.title;
+            Cohort.onclick = () => window.location.hash = cohort.cohort;
+            this.#renderBest(startup, cohort.startup);
+            this.#renderBest(idea, cohort.idea);
+            this.#renderBest(code, cohort.code)
 
-            tr.append(rank, student, score, startup, idea, code);
+            tr.append(Cohort, startup, idea, code);
             tbody.append(tr);
         });
 
         this.shadowRoot.querySelector('tbody').replaceChildren(tbody);
-        this.#highlight(best);
     }
 
-    async #getBest() {
-        
+    #renderBest(element, students) {
+        if (students) students.forEach(student => {
+            const a = document.createElement('a');
+            if (student.project) a.setAttribute('href', student.project);
+            a.textContent = `@${student.username}`;
+            a.title = `Voters: ${student.voters.join(", ")}`;
+            element.append(a);
+        }) 
+        else element.append("TBD");
+    }
+
+    #cohorts = [
+        {
+            cohort: "frontend",
+            title: "Frontend Music"
+        },
+        {
+            cohort: "backend",
+            title: "Backend Blockchain"
+        },
+        {
+            cohort: "ios",
+            title: "iOS Metaverse"
+        }
+    ];
+
+    async #findBest(y, term, getData) {
+        for (let best of this.#cohorts) {
+            const students = await getData(`https://raw.githubusercontent.com/SiliconWat/${best.cohort}-cohort/main/Students.json`);
+            const votes = await getData(`https://raw.githubusercontent.com/SiliconWat/${best.cohort}-cohort/main/${y}/${term[1] === 'semester' ? "Semesters" : "Quarters"}/${term[2].capitalize()}/Votes.json`);
+            best.startup = votes.startup ? this.#getBest(y, term, students, votes.startup) : null;
+            best.idea = votes.idea ? this.#getBest(y, term, students, votes.idea) : null;
+            best.code = votes.code ? this.#getBest(y, term, students, votes.code) : null;
+        }
+
+        return this.#cohorts;
+    }
+
+    #getBest(y, term, students, voters) {
+        let max = 0, best = [];
+
+        for (let student in voters) {
+            const cohort = students[student].cohorts.find(cohort => cohort.year === y && cohort.system === term[1] && cohort.season === term[2]);
+
+            if (voters[student].length > max) {
+                max = voters[student].length;
+                best = [{ username: student, voters: voters[student].sort(), ...cohort }];
+            } else if (voters[student].length === max) {
+                best.push({ username: student, voters: voters[student].sort(), ...cohort });
+            }
+        }
+
+        return best.sort((a, b) => {
+            if (a.username < b.username) return -1;
+            if (a.username > b.username) return 1;
+            return 0;
+        });
     }
 }
 

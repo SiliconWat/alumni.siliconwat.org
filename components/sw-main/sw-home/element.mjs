@@ -8,6 +8,7 @@ class SwHome extends HTMLElement {
     }
 
     render() {
+        this.shadowRoot.querySelector('sw-best').render();
         this.style.display = 'block';
     }
 }
