@@ -3,25 +3,6 @@
     font-size: medium;
 }
 
-table {
-    color: currentColor;
-    font-size: 1.5em;
-    background-color: rgba(0, 0, 0, 60%);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 60%);
-    border-collapse: collapse;
-    text-align: center;
-    overflow-x: scroll;
-}
-
-th, td {
-    cursor: default;
-    padding: 25px;
-}
-
-caption {
-    display: none;
-}
-
 col:first-child {
     background-color: rgba(0, 0, 0, 20%);
 }
@@ -30,30 +11,20 @@ col:nth-child(2) {
     background-color: rgba(0, 0, 0, 10%);
 }
 
-thead {
-    background-color: rgba(0, 0, 0, 30%);
-}
-
 thead th:nth-child(n + 3):nth-child(-n + 6) {
     cursor: pointer;
 }
 
-tbody tr:hover {
-    background-color: rgba(255, 255, 255, 20%);
+td:hover {
+    color: white;
+    font-weight: normal;
 }
 
 .highlight {
     color: lightgreen !important;
     font-weight: bold !important;
-    background-color: rgba(255, 255, 0, 20%);
 }
 
 @media (max-width: 480px) {
-    table {
-        font-size: 0.3em;
-    }
-
-    th, td {
-        padding: 5px;
-    }
+    
 }

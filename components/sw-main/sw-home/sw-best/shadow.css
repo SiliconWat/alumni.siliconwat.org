@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    font-size: medium;
+}
+
+col:first-child {
+    background-color: rgba(0, 0, 0, 20%);
+}
+
+td:hover {
+    color: white;
+    font-weight: normal;
+}
+
+@media (max-width: 480px) {
+    
+}
