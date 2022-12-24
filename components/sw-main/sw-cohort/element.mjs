@@ -55,7 +55,7 @@ class SwCohort extends HTMLElement {
             const term = cycle.split('-');
             const option = document.createElement('option');
             option.value = cycle;
-            option.textContent = `${term[0].capitalize()} ${term[1].capitalize()}`;
+            option.textContent = `${term[1].capitalize()} ${term[0].capitalize()}`;
             fragment.append(option);
         });
     }
