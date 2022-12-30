@@ -1,4 +1,4 @@
-import { ORIGIN } from "/global.mjs";
+import { SHOWCASE as ORIGIN } from "https://thonly.org/global.mjs";
 const template = document.createElement("template");
 
 template.innerHTML = `

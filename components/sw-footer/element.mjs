@@ -1,4 +1,4 @@
-import { UNIVERSITY } from '/global.mjs';
+import { UNIVERSITY } from 'https://thonly.org/global.mjs';
 import template from './template.mjs';
 
 class SwFooter extends HTMLElement {

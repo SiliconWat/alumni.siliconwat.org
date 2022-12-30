@@ -1,4 +1,4 @@
-import { FRONTEND } from "/global.mjs";
+import { FRONTEND_COURSE as FRONTEND } from "https://thonly.org/global.mjs";
 const template = document.createElement("template");
 
 template.innerHTML = `

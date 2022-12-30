@@ -1,4 +1,4 @@
-import { BACKGROUND } from '/global.mjs';
+import { BACKGROUND } from 'https://thonly.org/global.mjs';
 import template from './template.mjs';
 
 class SwMain extends HTMLElement {

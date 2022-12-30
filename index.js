@@ -7,7 +7,7 @@ import "/components/sw-main/element.mjs";
 import "/components/sw-coin/element.mjs";
 import "/components/sw-footer/element.mjs";
 
-import { FRONTEND, BACKGROUND } from "/global.mjs";
+import { FRONTEND_COURSE as FRONTEND, BACKGROUND } from "https://thonly.org/global.mjs";
 window.onload = async () => {
     await import(`${FRONTEND}/admin.mjs`);
     if (!window.TESTING) window.clearCache();

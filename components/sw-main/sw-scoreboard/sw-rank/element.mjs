@@ -1,4 +1,4 @@
-import { FRONTEND } from "/global.mjs";
+import { FRONTEND_COURSE as FRONTEND } from "https://thonly.org/global.mjs";
 import template from './template.mjs';
 
 class SwRank extends HTMLElement {
