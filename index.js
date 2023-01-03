@@ -1,17 +1,17 @@
-import "/components/sw-header/element.mjs";
-
 import "/components/sw-main/sw-home/element.mjs";
 import "/components/sw-main/sw-scoreboard/element.mjs";
-import "/components/sw-main/element.mjs";
 
-import "/components/sw-coin/element.mjs";
 import "/components/sw-footer/element.mjs";
+import "/components/sw-coin/element.mjs";
+
+import "/components/sw-header/element.mjs";
+import "/components/sw-main/element.mjs";
 
 import { FRONTEND_COURSE as FRONTEND, BACKGROUND } from "https://thonly.org/global.mjs";
 window.onload = async () => {
     await import(`${FRONTEND}/admin.mjs`);
     if (!window.TESTING) window.clearCache();
-    
+
     await document.querySelector('sw-main').render();
     document.documentElement.style.backgroundImage = BACKGROUND;
     document.body.style.display = 'flex';
