@@ -51,7 +51,7 @@ template.innerHTML = `
 	</svg>
     <slot></slot>
     <footer>
-        <!--<p>TBA</p>-->
+        <p>SW Coins coming soon...</p>
     </footer>
 `;
 
