@@ -10,12 +10,12 @@ col:first-child {
 td:hover {
     color: white;
     font-weight: normal;
+    cursor: grab;
 }
 
 tbody th {
     cursor: pointer;
 }
-
 
 a {
     display: block;

@@ -19,7 +19,7 @@ class SwBest extends HTMLElement {
     #render(cohorts) {
         const tbody = document.createDocumentFragment();
 
-        cohorts.forEach(cohort => {
+        cohorts.forEach((cohort, i) => {
             const tr = document.createElement('tr');
             const Cohort = document.createElement('th');
             const startup = document.createElement('td');
@@ -28,9 +28,9 @@ class SwBest extends HTMLElement {
 
             Cohort.textContent = cohort.title;
             Cohort.onclick = () => window.location.hash = cohort.cohort;
-            this.#renderBest(startup, cohort.startup);
-            this.#renderBest(idea, cohort.idea);
-            this.#renderBest(code, cohort.code)
+            this.#renderBest("startup", i, startup, cohort.startup);
+            this.#renderBest("idea", i, idea, cohort.idea);
+            this.#renderBest("code", i, code, cohort.code)
 
             tr.append(Cohort, startup, idea, code);
             tbody.append(tr);
@@ -39,14 +39,17 @@ class SwBest extends HTMLElement {
         this.shadowRoot.querySelector('tbody').replaceChildren(tbody);
     }
 
-    #renderBest(element, students) {
-        if (students) students.forEach(student => {
-            const a = document.createElement('a');
-            if (student.project) a.setAttribute('href', student.project);
-            a.textContent = `@${student.username}`;
-            a.title = `Voters: ${student.voters.join(", ")}`;
-            element.append(a);
-        }) 
+    #renderBest(best, i, element, students) {
+        element.onclick = () => window.location.hash = `${this.#cohorts[i].cohort}-${best}`;
+        if (students)
+            students.forEach(student => {
+                const a = document.createElement('a');
+                if (student.project) a.setAttribute('href', student.project);
+                a.textContent = `@${student.username}`;
+                a.title = `Voters: ${student.voters.join(", ")}`;
+                a.target = "_blank";
+                element.append(a);
+            });
         else element.append("TBD");
     }
 
