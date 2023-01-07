@@ -51,7 +51,8 @@ template.innerHTML = `
 	</svg>
     <slot></slot>
     <footer>
-        <p>SW Coins coming soon...</p>
+		<p><strong>SW Coins</strong> coming soon...</p>
+		<p><a href="https://twitter.com/siliconwat">Follow on Twitter</a> for real-time updates!</p>
     </footer>
 `;
 
