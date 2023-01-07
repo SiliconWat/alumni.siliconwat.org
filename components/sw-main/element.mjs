@@ -1,4 +1,4 @@
-import { BACKGROUND } from 'https://thonly.org/global.mjs';
+import { BACKGROUND, DEVICE } from 'https://thonly.org/global.mjs';
 import template from './template.mjs';
 
 class SwMain extends HTMLElement {
@@ -6,10 +6,14 @@ class SwMain extends HTMLElement {
         super();
         this.attachShadow({ mode: "open" });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
+        window.addEventListener("hashchange", event => this.render());
     }
 
     connectedCallback() {
-        window.addEventListener("hashchange", event => this.render());
+        const img = document.createElement('img');
+        this.shadowRoot.querySelector('footer').prepend(img);
+        img.src = DEVICE[2].image;
+        img.title = DEVICE[2].description;
         this.style.display = 'block';
     }
 
