@@ -12,8 +12,8 @@ class SwRank extends HTMLElement {
         const { getYear, getTerm, getData, getEmoji } = await import(`${FRONTEND}/global2.mjs`);
         const y = getYear();
         const term = getTerm();
-        const students = await getData(`https://raw.githubusercontent.com/SiliconWat/${cohort}-cohort/main/Students.json`);
-        const votes = await getData(`https://raw.githubusercontent.com/SiliconWat/${cohort}-cohort/main/${y}/${term[1] === 'semester' ? "Semesters" : "Quarters"}/${term[2].capitalize()}/Votes.json`);
+        const students = await getData(`https://raw.githubusercontent.com/SiliconWat/${cohort}.siliconwat.dev/main/Students.json`);
+        const votes = await getData(`https://raw.githubusercontent.com/SiliconWat/${cohort}.siliconwat.dev/main/${y}/${term[1] === 'semester' ? "Semesters" : "Quarters"}/${term[2].capitalize()}/Votes.json`);
         
         const data = JSON.parse(localStorage.getItem('data')) || await this.#createData(y, term, students, votes); // TODO: later?
         this.#render(cohort, best, data, getEmoji);

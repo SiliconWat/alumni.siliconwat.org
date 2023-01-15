@@ -70,8 +70,8 @@ class SwBest extends HTMLElement {
 
     async #findBest(y, term, getData) {
         for (let best of this.#cohorts) {
-            const students = await getData(`https://raw.githubusercontent.com/SiliconWat/${best.cohort}-cohort/main/Students.json`);
-            const votes = await getData(`https://raw.githubusercontent.com/SiliconWat/${best.cohort}-cohort/main/${y}/${term[1] === 'semester' ? "Semesters" : "Quarters"}/${term[2].capitalize()}/Votes.json`);
+            const students = await getData(`https://raw.githubusercontent.com/SiliconWat/${best.cohort}.siliconwat.dev/main/Students.json`);
+            const votes = await getData(`https://raw.githubusercontent.com/SiliconWat/${best.cohort}.siliconwat.dev/main/${y}/${term[1] === 'semester' ? "Semesters" : "Quarters"}/${term[2].capitalize()}/Votes.json`);
             best.startup = votes.startup ? this.#getBest(y, term, students, votes.startup) : null;
             best.idea = votes.idea ? this.#getBest(y, term, students, votes.idea) : null;
             best.code = votes.code ? this.#getBest(y, term, students, votes.code) : null;
