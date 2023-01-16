@@ -1,4 +1,4 @@
-import { BACKGROUND, DEVICE } from 'https://thonly.org/global.mjs';
+import { QUIZ, BACKGROUND } from 'https://thonly.org/global.mjs';
 import template from './template.mjs';
 
 class SwMain extends HTMLElement {
@@ -9,11 +9,8 @@ class SwMain extends HTMLElement {
         window.addEventListener("hashchange", event => this.render());
     }
 
-    connectedCallback() {
-        const img = document.createElement('img');
-        this.shadowRoot.querySelector('footer').prepend(img);
-        img.src = DEVICE[2].image;
-        img.title = DEVICE[2].description;
+    async connectedCallback() {
+        await import(`${QUIZ}/components/sw-download/element.mjs`);
         this.style.display = 'block';
     }
 

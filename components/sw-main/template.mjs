@@ -50,10 +50,7 @@ template.innerHTML = `
 		<path class="cls-2" d="M1394,892.5c-57.31,0-87-83-115-138s-118-66-118-146,181.86-14.39,255-152.74,349-138.26,336,12.74,178.59,336.58-60.71,333.73S1449,892.5,1394,892.5Z" />
 	</svg>
     <slot></slot>
-    <footer>
-		<p><strong>SW Coins</strong> coming soon...</p>
-		<p><a href="https://twitter.com/siliconwat">Follow on Twitter</a> for real-time updates!</p>
-    </footer>
+    <sw-download></sw-download>
 `;
 
 export default template;
