@@ -10,7 +10,8 @@ template.innerHTML = `
         <sw-best></sw-best>
     </main>
     <footer>
-        <p><strong>Top graduates</strong> have the opportunity to interview for a <em>paid consultancy</em> at <a href="https://siliconwat.dev">Silicon Wat Agency</a>!</p>
+        <p><strong>Top graduates</strong> have the opportunity to <em>tutor</em> <strong>new students</strong> to gain more experience and more <strong>SW Coins</strong>!</p>
+        <p>Afterwards, <strong>top tutors</strong> have the opportunity to interview for a <em>paid consultancy</em> at <a href="https://siliconwat.dev">Silicon Wat Agency</a>!</p>
     </footer>
 `;
 
