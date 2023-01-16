@@ -34,6 +34,14 @@ template.innerHTML = `
                         <li><a href="https://heartbank.cloud/#chrome">Chrome Extension</a></li>
                     </ul> 
                 </div>
+                <div>
+                    <h5>Remote Jobs</h5>
+                    <ul>
+                        <li><a href="https://siliconwat.dev/#tutor">Volunteer Tutor</a></li>
+                        <li><a href="https://siliconwat.dev/#freelancer">Paid Freelancer</a></li>
+                        <li><a href="https://siliconwat.dev/#apply">Apply for Interview</a></li>
+                    </ul>
+                </div>
             </section>
         </main>
         <footer>
