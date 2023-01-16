@@ -9,6 +9,9 @@ template.innerHTML = `
         <sw-cohort></sw-cohort>
         <sw-best></sw-best>
     </main>
+    <footer>
+        <p><strong>Top graduates</strong> have the opportunity to interview for a <em>paid consultancy</em> at <a href="https://siliconwat.dev">Silicon Wat Agency</a>!</p>
+    </footer>
 `;
 
 export default template;
