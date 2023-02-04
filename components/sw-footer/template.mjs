@@ -37,9 +37,9 @@ template.innerHTML = `
                 <div>
                     <h5>Remote Jobs</h5>
                     <ul>
-                        <li><a href="https://siliconwat.dev/#tutor">Volunteer Tutor</a></li>
-                        <li><a href="https://siliconwat.dev/#freelancer">Paid Freelancer</a></li>
-                        <li><a href="https://siliconwat.dev/#apply">Apply for Interview</a></li>
+                        <li><a href="#volunteer">Volunteer Tutor</a></li>
+                        <li><a href="https://siliconwat.dev/#earn">Paid Freelancer</a></li>
+                        <li><a href="https://calendar.thonly.org/#interview">Apply for Interview</a></li>
                     </ul>
                 </div>
             </section>

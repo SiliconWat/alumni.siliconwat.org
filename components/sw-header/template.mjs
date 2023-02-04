@@ -7,7 +7,7 @@ template.innerHTML = `
     <header>
         <section>
             <a href="https://siliconwat.org"><img src="siliconwat.png"></a>
-            <a href="#"><h1>Student Project Showcase</h1></a>
+            <a href="#"><h1>Alumni Showcase</h1></a>
         </section>
         <input id="menu-toggle" type="checkbox">
         <label class='menu-button-container' for="menu-toggle">
@@ -24,6 +24,7 @@ template.innerHTML = `
                         <li><a href="#frontend-idea">Best Idea</a></li>
                         <li><a href="#frontend-code">Best Code</a></li>
                     </menu>
+                    <a href="#volunteer"><button class="cohort">Volunteer as Tutor</button></a>
                 </nav>
             </li>
             <li>
@@ -36,6 +37,7 @@ template.innerHTML = `
                         <li><a href="#backend-idea">Best Idea</a></li>
                         <li><a href="#backend-code">Best Code</a></li>
                     </menu>
+                    <a href="#volunteer"><button class="cohort">Volunteer as Tutor</button></a>
                 </nav>
             </li>
             <li>
@@ -48,6 +50,7 @@ template.innerHTML = `
                         <li><a href="#ios-idea">Best Idea</a></li>
                         <li><a href="#ios-code">Best Code</a></li>
                     </menu>
+                    <a href="#volunteer"><button class="cohort">Volunteer as Tutor</button></a>
                 </nav>
             </li>
         </ul>
