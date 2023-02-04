@@ -17,40 +17,40 @@ template.innerHTML = `
             <li>
                 <h3>Frontend Music Cohort</h3>
                 <nav>
-                    <a href="#frontend"><button>Student Roster</button></a>
+                    <a href="#frontend"><button class="cohort">Student Roster</button></a>
                     <h4>Scoreboard</h4>
                     <menu>
                         <li><a href="#frontend-startup">Best Startup</a></li>
                         <li><a href="#frontend-idea">Best Idea</a></li>
                         <li><a href="#frontend-code">Best Code</a></li>
                     </menu>
-                    <a href="#volunteer"><button class="cohort">Volunteer as Tutor</button></a>
+                    <a href="https://github.com/SiliconWat/frontend.siliconwat.dev"><button class="coin">Volunteer Tutor</button></a>
                 </nav>
             </li>
             <li>
                 <h3>Backend Blockchain Cohort</h3>
                 <nav>
-                    <a href="#backend"><button>Student Roster</button></a>
+                    <a href="#backend"><button class="cohort">Student Roster</button></a>
                     <h4>Scoreboard</h4>
                     <menu>
                         <li><a href="#backend-startup">Best Startup</a></li>
                         <li><a href="#backend-idea">Best Idea</a></li>
                         <li><a href="#backend-code">Best Code</a></li>
                     </menu>
-                    <a href="#volunteer"><button class="cohort">Volunteer as Tutor</button></a>
+                    <a href="https://github.com/SiliconWat/backend.siliconwat.dev"><button class="coin">Volunteer Tutor</button></a>
                 </nav>
             </li>
             <li>
                 <h3>iOS Metaverse Cohort</h3>
                 <nav>
-                    <a href="#ios"><button>Student Roster</button></a>
+                    <a href="#ios"><button class="cohort">Student Roster</button></a>
                     <h4>Scoreboard</h4>
                     <menu>
                         <li><a href="#ios-startup">Best Startup</a></li>
                         <li><a href="#ios-idea">Best Idea</a></li>
                         <li><a href="#ios-code">Best Code</a></li>
                     </menu>
-                    <a href="#volunteer"><button class="cohort">Volunteer as Tutor</button></a>
+                    <a href="https://github.com/SiliconWat/ios.siliconwat.dev"><button class="coin">Volunteer Tutor</button></a>
                 </nav>
             </li>
         </ul>
