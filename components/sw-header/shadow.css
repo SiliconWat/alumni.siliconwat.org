@@ -4,15 +4,11 @@
 }
 
 section {
-	flex: 2;
+	flex: 3;
 }
 
 ul {
 	flex: 10;
-}
-
-h1 {
-	font-size: 1.3em;
 }
 
 /*menu li input:not([oninput]) {
@@ -22,6 +18,10 @@ h1 {
 
 @media (max-width: 480px) {
 	section {
-		flex: 1;
+		flex: 2;
+	}
+
+	h1 {
+		font-size: 1.5em;
 	}
 }
