@@ -21,3 +21,13 @@ h1 {
 		font-size: 1.5em;
 	}
 }
+
+@media (max-height: 480px) {
+	section {
+		flex: 4;
+	}
+
+	h1 {
+		font-size: 2.5em;
+	}
+}
