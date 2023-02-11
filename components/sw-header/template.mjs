@@ -13,47 +13,49 @@ template.innerHTML = `
         <label class='menu-button-container' for="menu-toggle">
             <span class='menu-button'></span>
         </label>
-        <ul>
-            <li>
-                <h3>Frontend Music Cohort</h3>
-                <nav>
-                    <a href="#frontend"><button class="cohort">Student Roster</button></a>
-                    <h4>Scoreboard</h4>
-                    <menu>
-                        <li><a href="#frontend-startup">Best Startup</a></li>
-                        <li><a href="#frontend-idea">Best Idea</a></li>
-                        <li><a href="#frontend-code">Best Code</a></li>
-                    </menu>
-                    <a href="https://github.com/SiliconWat/frontend.siliconwat.dev"><button class="coin">Tutor Volunteer</button></a>
-                </nav>
-            </li>
-            <li>
-                <h3>Backend Blockchain Cohort</h3>
-                <nav>
-                    <a href="#backend"><button class="cohort">Student Roster</button></a>
-                    <h4>Scoreboard</h4>
-                    <menu>
-                        <li><a href="#backend-startup">Best Startup</a></li>
-                        <li><a href="#backend-idea">Best Idea</a></li>
-                        <li><a href="#backend-code">Best Code</a></li>
-                    </menu>
-                    <a href="https://github.com/SiliconWat/backend.siliconwat.dev"><button class="coin">Tutor Volunteer</button></a>
-                </nav>
-            </li>
-            <li>
-                <h3>iOS Metaverse Cohort</h3>
-                <nav>
-                    <a href="#ios"><button class="cohort">Student Roster</button></a>
-                    <h4>Scoreboard</h4>
-                    <menu>
-                        <li><a href="#ios-startup">Best Startup</a></li>
-                        <li><a href="#ios-idea">Best Idea</a></li>
-                        <li><a href="#ios-code">Best Code</a></li>
-                    </menu>
-                    <a href="https://github.com/SiliconWat/ios.siliconwat.dev"><button class="coin">Tutor Volunteer</button></a>
-                </nav>
-            </li>
-        </ul>
+        <div>
+            <ul>
+                <li>
+                    <h3>Frontend Music Cohort</h3>
+                    <nav>
+                        <a href="#frontend"><button class="cohort">Student Roster</button></a>
+                        <h4>Scoreboard</h4>
+                        <menu>
+                            <li><a href="#frontend-startup">Best Startup</a></li>
+                            <li><a href="#frontend-idea">Best Idea</a></li>
+                            <li><a href="#frontend-code">Best Code</a></li>
+                        </menu>
+                        <a href="https://github.com/SiliconWat/frontend.siliconwat.dev"><button class="coin">Tutor Volunteer</button></a>
+                    </nav>
+                </li>
+                <li>
+                    <h3>Backend Blockchain Cohort</h3>
+                    <nav>
+                        <a href="#backend"><button class="cohort">Student Roster</button></a>
+                        <h4>Scoreboard</h4>
+                        <menu>
+                            <li><a href="#backend-startup">Best Startup</a></li>
+                            <li><a href="#backend-idea">Best Idea</a></li>
+                            <li><a href="#backend-code">Best Code</a></li>
+                        </menu>
+                        <a href="https://github.com/SiliconWat/backend.siliconwat.dev"><button class="coin">Tutor Volunteer</button></a>
+                    </nav>
+                </li>
+                <li>
+                    <h3>iOS Metaverse Cohort</h3>
+                    <nav>
+                        <a href="#ios"><button class="cohort">Student Roster</button></a>
+                        <h4>Scoreboard</h4>
+                        <menu>
+                            <li><a href="#ios-startup">Best Startup</a></li>
+                            <li><a href="#ios-idea">Best Idea</a></li>
+                            <li><a href="#ios-code">Best Code</a></li>
+                        </menu>
+                        <a href="https://github.com/SiliconWat/ios.siliconwat.dev"><button class="coin">Tutor Volunteer</button></a>
+                    </nav>
+                </li>
+            </ul>
+        </div>
         <aside>
             <select onchange="this.getRootNode().host.changeLanguage(event)">
                 <option value="en">English</option>
