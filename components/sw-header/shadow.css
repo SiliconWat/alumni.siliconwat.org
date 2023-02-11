@@ -24,7 +24,7 @@ h1 {
 
 @media (max-height: 480px) {
 	section {
-		flex: 4;
+		flex: 8;
 	}
 
 	h1 {
